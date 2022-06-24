@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <link href="./style.scss" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,21 +15,30 @@
   </head>
   <body>
     <div class="preloader"></div>
-    <div class="question_container">
-      
-      <div class="questions_box" id="questions_box"></div>
+    <div class="question__container">
+      <div class="question__section" id="question__section"></div>
       <div class="navigation">
-        <div class="navigation_sliders">
-          <button class="btn_slider" id="prev" onclick="previousQuestion()">
+        <div class="navigation__sliders">
+          <button
+            class="navigation__button--previous"
+            id="prev"
+            onclick="previousQuestion()"
+          >
             Previous
           </button>
-          <button class="btn_slider" id="next" onclick="nextQuestion()">
+          <button
+            class="navigation__button--next"
+            id="next"
+            onclick="nextQuestion()"
+          >
             Next
           </button>
         </div>
-        <button class="btn_result" id="get">Show correct answers!</button>
+        <button class="navigation__button--result" id="get">
+          Show correct answers!
+        </button>
       </div>
-      <img class="question_bacground" src="./img/Frame.png" />
+      <img class="question__container--background" src="./img/Frame.png" />
     </div>
 
     <script src="./main.js"></script>

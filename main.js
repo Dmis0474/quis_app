@@ -1,47 +1,39 @@
 let dataArr;
 
-const loader = document.querySelector(".preloader")
+const loader = document.querySelector(".preloader");
 
 function displayLoading() {
-  loader.classList.add("display")
-  
+  loader.classList.add("display");
 }
 
 function hideLoading() {
-  loader.classList.remove("display")
+  loader.classList.remove("display");
 }
 
-
-
 const requestURL = `https://the-trivia-api.com/api/questions`;
-displayLoading()
+displayLoading();
 fetch(requestURL)
   .then((response) => response.json())
   .then((response) => {
     dataArr = response;
     showInfo(dataArr);
-    hideLoading()
+    hideLoading();
   });
-   
-  
-
-
-
 
 let allCorrectAnswers = [];
 function showInfo(data) {
   let spanCat = document.createElement("p");
   spanCat.innerHTML = `Your category:<br> ${data[0].category}`;
-  document.querySelector("#questions_box").appendChild(spanCat);
+  document.querySelector("#question__section").appendChild(spanCat);
   let spanQuest = document.createElement("p");
   spanQuest.innerHTML = `Your question:<br> ${data[0].question}`;
-  document.querySelector("#questions_box").appendChild(spanQuest);
+  document.querySelector("#question__section").appendChild(spanQuest);
   let containerAllAnswers = [...data[0].incorrectAnswers];
   containerAllAnswers.push(data[0].correctAnswer);
   containerAllAnswers = containerAllAnswers.sort();
   console.log(containerAllAnswers);
   let buttonsDiv = document.createElement("div");
-  buttonsDiv.className = 'buttons_box';
+  buttonsDiv.className = "button__section";
   buttonsDiv.inner = containerAllAnswers.map((item, index) => {
     let input = document.createElement("input");
     input.className = "btn";
@@ -58,7 +50,7 @@ function showInfo(data) {
     label.for = `${item}id`;
     buttonsDiv.appendChild(label);
   });
-  document.querySelector("#questions_box").appendChild(buttonsDiv);
+  document.querySelector("#question__section").appendChild(buttonsDiv);
   let arrCorrectAnswer = [];
   data.map((item) => arrCorrectAnswer.push(item.correctAnswer));
   console.log(arrCorrectAnswer);
@@ -85,7 +77,7 @@ function nextQuestion() {
     checkAnswer();
   }
 
-  let elementInfo = document.getElementById("questions_box");
+  let elementInfo = document.getElementById("question__section");
   while (elementInfo.firstChild) {
     elementInfo.removeChild(elementInfo.firstChild);
   }
@@ -94,15 +86,16 @@ function nextQuestion() {
 
   let spanCat = document.createElement("p");
   spanCat.innerHTML = `Your category:<br> ${dataArr[indexQuestion].category}`;
-  document.querySelector("#questions_box").appendChild(spanCat);
+  document.querySelector("#question__section").appendChild(spanCat);
   let spanQuest = document.createElement("p");
   spanQuest.innerHTML = `Your question:<br> ${dataArr[indexQuestion].question}`;
-  document.querySelector("#questions_box").appendChild(spanQuest);
+  document.querySelector("#question__section").appendChild(spanQuest);
   let containerAllAnswers = [...dataArr[indexQuestion].incorrectAnswers];
   containerAllAnswers.push(dataArr[indexQuestion].correctAnswer);
   containerAllAnswers = containerAllAnswers.sort();
   console.log(containerAllAnswers);
   let buttonsDiv = document.createElement("div");
+  buttonsDiv.className = "button__section";
   buttonsDiv.inner = containerAllAnswers.map((item, index) => {
     let input = document.createElement("input");
     input.className = "btn";
@@ -118,7 +111,7 @@ function nextQuestion() {
     label.className = "options";
     label.for = `${item}id`;
     buttonsDiv.appendChild(label);
-    document.querySelector("#questions_box").appendChild(buttonsDiv);
+    document.querySelector("#question__section").appendChild(buttonsDiv);
   });
 }
 
@@ -127,7 +120,7 @@ function previousQuestion() {
     checkAnswer();
   }
 
-  let elementInfo = document.getElementById("questions_box");
+  let elementInfo = document.getElementById("question__section");
   while (elementInfo.firstChild) {
     elementInfo.removeChild(elementInfo.firstChild);
   }
@@ -136,15 +129,16 @@ function previousQuestion() {
 
   let spanCat = document.createElement("p");
   spanCat.innerHTML = `Your category:<br> ${dataArr[indexQuestion].category}`;
-  document.querySelector("#questions_box").appendChild(spanCat);
+  document.querySelector("#question__section").appendChild(spanCat);
   let spanQuest = document.createElement("p");
   spanQuest.innerHTML = `Your question:<br> ${dataArr[indexQuestion].question}`;
-  document.querySelector("#questions_box").appendChild(spanQuest);
+  document.querySelector("#question__section").appendChild(spanQuest);
   let containerAllAnswers = [...dataArr[indexQuestion].incorrectAnswers];
   containerAllAnswers.push(dataArr[indexQuestion].correctAnswer);
   containerAllAnswers = containerAllAnswers.sort();
   console.log(containerAllAnswers);
   let buttonsDiv = document.createElement("div");
+  buttonsDiv.className = "button__section";
   buttonsDiv.inner = containerAllAnswers.map((item, index) => {
     let input = document.createElement("input");
     input.className = "btn";
@@ -160,7 +154,7 @@ function previousQuestion() {
     label.className = "options";
     label.for = `${item}id`;
     buttonsDiv.appendChild(label);
-    document.querySelector("#questions_box").appendChild(buttonsDiv);
+    document.querySelector("#question__section").appendChild(buttonsDiv);
   });
 }
 
